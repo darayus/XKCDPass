@@ -1,4 +1,6 @@
 
+/// The base configuration struct for the password generator. Pass this configuration to the
+/// generator to create a password.
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct Configuration {
     pub words: WordConfiguration,

@@ -1,4 +1,8 @@
 
+// TODO: Break this into structs with a WordList trait that allows custom dictionaries
+
+/// Generate the word list. Currently only loads the simple english dictionary. This is loaded
+/// at compile time. Returns a list of words.
 pub fn get_word_list(min_len: u8, max_len: u8) -> Vec<String> {
     let dict_simple_en = include_str!("dictionaries/simple_en.txt");
 
