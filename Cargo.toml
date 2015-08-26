@@ -1,0 +1,4 @@
+[package]
+name = "xkcd_pass"
+version = "0.1.0"
+authors = ["Darayus Nanavati <darayus.contact@gmail.com>"]
