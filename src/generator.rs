@@ -2,7 +2,7 @@
 use std::ascii::AsciiExt;
 use std::iter::repeat;
 use rand::{Rng, thread_rng};
-use super::config::{Configuration, WordTransformations, SeperatorTypes, PaddingCharTypes, PaddingTypes};
+use super::configuration::{Configuration, WordTransformations, SeperatorTypes, PaddingCharTypes, PaddingTypes};
 use super::word_list::get_word_list;
 
 pub fn generate_password(config: &Configuration) -> String {

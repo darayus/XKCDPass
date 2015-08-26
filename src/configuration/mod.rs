@@ -1,3 +1,6 @@
+//! The configuration that the password generator uses to generate a password
+
+pub mod defaults;
 
 /// The base configuration struct for the password generator. Pass this configuration to the
 /// generator to create a password.
@@ -7,6 +10,21 @@ pub struct Configuration {
     pub seperator: SeperatorConfiguration,
     pub padding_digits: PaddingDigitConfiguration,
     pub padding_symbols: PaddingSymbolConfiguration,
+}
+
+impl Configuration {
+    /// Creates a new configuration with the default settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::default();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn default() -> Configuration {
+        return defaults::configuration_default();
+    }
 }
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
