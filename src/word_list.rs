@@ -18,9 +18,9 @@ impl SimpleEnglish {
     /// Creates a new `SimpleEnglish` word list that can be used to generate passwords.
     ///
     /// ```
+    /// use xkcd_pass::word_list::SimpleEnglish;
+    ///
     /// let word_list = SimpleEnglish::new();
-    /// // The word list has words!
-    /// assert!(word_list.num_words() != 0);
     /// ```
     pub fn new() -> SimpleEnglish {
         let dict_simple_en = include_str!("dictionaries/simple_en.txt");
