@@ -64,6 +64,45 @@ impl Configuration {
     pub fn xkcd() -> Configuration {
         return defaults::configuration_xkcd();
     }
+
+    /// Creates a new configuration with the web16 settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::web16();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn web16() -> Configuration {
+        return defaults::configuration_web16();
+    }
+
+    /// Creates a new configuration with the web32 settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::web32();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn web32() -> Configuration {
+        return defaults::configuration_web32();
+    }
+
+    /// Creates a new configuration with the wifi settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::wifi();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn wifi() -> Configuration {
+        return defaults::configuration_wifi();
+    }
 }
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
