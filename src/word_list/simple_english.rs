@@ -1,16 +1,8 @@
-//! Contains the word lists for the password generator.
-//!
-//! Custom word lists can be made by creating a struct / enum and implementing the `WordList`
-//! trait.
+//! The simple English word list based on the `simple_en.txt` dictionary.
 
+use super::WordList;
 
-/// The trait that all word lists must implement.
-pub trait WordList {
-    /// Get all the words in the word list which are within the minimum and maximum length
-    fn get_words(&self, min_len: u8, max_len: u8) -> Vec<&String>;
-}
-
-/// Generate the word list. Currently only loads the simple english dictionary. This is loaded
+/// The English word list. Currently only loads the simple english dictionary. This is loaded
 /// at compile time. Returns a list of words.
 pub struct SimpleEnglish(Vec<String>);
 
