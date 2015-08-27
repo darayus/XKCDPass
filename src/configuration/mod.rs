@@ -51,6 +51,19 @@ impl Configuration {
     pub fn ntml() -> Configuration {
         return defaults::configuration_ntml();
     }
+
+    /// Creates a new configuration with the XKCD settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::xkcd();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn xkcd() -> Configuration {
+        return defaults::configuration_xkcd();
+    }
 }
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
