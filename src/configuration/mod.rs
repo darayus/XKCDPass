@@ -25,6 +25,32 @@ impl Configuration {
     pub fn default() -> Configuration {
         return defaults::configuration_default();
     }
+
+    /// Creates a new configuration with the Apple ID settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::appleid();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn appleid() -> Configuration {
+        return defaults::configuration_appleid();
+    }
+
+    /// Creates a new configuration with the NTML settings loaded in.
+    ///
+    /// ```
+    /// use xkcd_pass::configuration::Configuration;
+    ///
+    /// let config = Configuration::ntml();
+    /// // Print out the default configuration
+    /// println!("{:?}", config);
+    /// ```
+    pub fn ntml() -> Configuration {
+        return defaults::configuration_ntml();
+    }
 }
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
