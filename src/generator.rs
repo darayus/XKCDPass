@@ -3,14 +3,14 @@ use std::ascii::AsciiExt;
 use std::iter::repeat;
 use rand::{Rng, thread_rng};
 use super::configuration::{Configuration, WordTransformations, SeperatorTypes, PaddingCharTypes, PaddingTypes};
-use super::word_list::get_word_list;
+use super::word_list::WordList;
 
-pub fn generate_password(config: &Configuration) -> String {
+pub fn generate_password<A: WordList>(config: &Configuration, word_list: &A) -> String {
     // TODO: Accept different random generators
     let mut rgen = thread_rng();
 
     // Generate the words
-    let word_list = get_word_list(config.words.min_length, config.words.max_length);
+    let word_list = word_list.get_words(config.words.min_length, config.words.max_length);
     let num_words = config.words.num_words as usize;
     let mut chosen_words = Vec::with_capacity(num_words);
 
