@@ -1,4 +1,19 @@
 //! The configuration that the password generator uses to generate a password
+//!
+//! For most passwords, you will just want to use one of the preset password configurations.
+//! These presets can be found in the defaults module but convenience methods have also been
+//! provided.
+//!
+//! # Examples
+//!
+//! ```
+//! use xkcd_pass::Configuration;
+//!
+//! // Make a new default configuration
+//! let default_config = Configuration::default();
+//! // Make a new xkcd configuration
+//! let xkcd_config = Configuration::xkcd();
+//! ```
 
 pub mod defaults;
 
@@ -6,9 +21,13 @@ pub mod defaults;
 /// generator to create a password.
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct Configuration {
+    /// The configuration for the quantity and style of words generated
     pub words: WordConfiguration,
+    /// The configuration for the seperator characters between words
     pub seperator: SeperatorConfiguration,
+    /// The configuration for the padding digits before and after the password
     pub padding_digits: PaddingDigitConfiguration,
+    /// The configuration for the padding symbols before and after the password
     pub padding_symbols: PaddingSymbolConfiguration,
 }
 
@@ -105,61 +124,95 @@ impl Configuration {
     }
 }
 
+/// The configuration for the quantity and style of words generated
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct WordConfiguration {
+    /// The number of words that should be in the password
     pub num_words: u8,
+    /// The minimum length of the words in the password
     pub min_length: u8,
+    /// The maximum length of the words in the password
     pub max_length: u8,
 
+    /// The transformations that should be applied to the words
     pub transformations: WordTransformations,
 }
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub enum WordTransformations {
+    /// Capitalise the first letter of every word. i.e `Random` and `Word`
     CapitaliseFirst,
+    /// Capitalise all but the first letter of every word. i.e `rANDOM` and `wORD`
     CapitaliseNonFirst,
+    /// Convert all the words into lowercase. i.e `lower` and `case`
     LowerCase,
+    /// Convert all the words into uppercase. i.e `UPPER` and `CASE`
     UpperCase,
+    /// Alternate the words between lower and upper case in the password. i.e `randomWORDSinPASSWORD`
     AlternatingLowerUpper,
+    /// Randomly convert each word in the password to uppercase or lowercase. i.e `ArandomWORDPASSWORD`
     RandomLowerUpper,
 }
 
+/// The configuration for the seperator characters between words
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct SeperatorConfiguration {
+    /// The method in which the seperator chosen during password generation
     pub seperator_type: SeperatorTypes,
+    /// The possible seperator characters that could be chosen. Must contain at least 1 character
     pub seperators: Vec<char>,
 }
 
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub enum SeperatorTypes {
+    /// Use the same character (the first character in the seperators vector) for the seperator
+    /// between all of the words
     SingleCharacter,
+    /// Use a random character for the seperator between each word
     RandomCharacter,
 }
 
+/// The configuration for the padding digits before and after the password
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct PaddingDigitConfiguration {
+    /// The number of digits to pad before the password
     pub num_before: u8,
+    /// The number of digits to pad after the password
     pub num_after: u8,
 }
 
+/// The configuration for the padding symbols before and after the password
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub struct PaddingSymbolConfiguration {
+    /// The padding style to use for the password
     pub padding_type: PaddingTypes,
+    /// The method in which the padding characters are chosen
     pub padding_character_type: PaddingCharTypes,
+    /// The choices of characters that can pad the password. Must contain at least 1 character
     pub padding_chars: Vec<char>,
 }
 
+/// The padding style to use for the password
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub enum PaddingTypes {
-    // Pad to the length given
+    /// Pad the password to the length given. If the password is only 10 characters long and this
+    /// is set to 16, 6 extra characters of padding will be added to the end of the password
     Adaptive(u32),
-    // Padding before and padding after
+    /// A fixed amount of padding before and padding after the password. The first value is the
+    /// amount of padding before the password and the second value is the amount of padding
+    /// after the password
     Fixed(u8, u8),
 }
 
+/// The method in which the padding characters are chosen
 #[derive(Debug, RustcDecodable, RustcEncodable)]
 pub enum PaddingCharTypes {
+    /// Only a single character will be used for the padding. The first character in the
+    /// `padding_chars` vector in `PaddingSymbolConfiguration` is used
     SingleCharacter,
+    /// Choose a random character to pad the password from the `padding_chars` vector in
+    /// `PaddingSymbolConfiguration`
     RandomCharacter,
+    /// Use the same character as the one chosen for the seperator character
     SeperatorCharacter,
 }
