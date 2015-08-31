@@ -32,7 +32,7 @@ impl Configuration {
     /// use xkcd_pass::configuration::Configuration;
     ///
     /// let config = Configuration::appleid();
-    /// // Print out the default configuration
+    /// // Print out the appleid configuration
     /// println!("{:?}", config);
     /// ```
     pub fn appleid() -> Configuration {
@@ -45,7 +45,7 @@ impl Configuration {
     /// use xkcd_pass::configuration::Configuration;
     ///
     /// let config = Configuration::ntml();
-    /// // Print out the default configuration
+    /// // Print out the ntml configuration
     /// println!("{:?}", config);
     /// ```
     pub fn ntml() -> Configuration {
@@ -58,7 +58,7 @@ impl Configuration {
     /// use xkcd_pass::configuration::Configuration;
     ///
     /// let config = Configuration::xkcd();
-    /// // Print out the default configuration
+    /// // Print out the xkcd configuration
     /// println!("{:?}", config);
     /// ```
     pub fn xkcd() -> Configuration {
@@ -71,7 +71,7 @@ impl Configuration {
     /// use xkcd_pass::configuration::Configuration;
     ///
     /// let config = Configuration::web16();
-    /// // Print out the default configuration
+    /// // Print out the web16 configuration
     /// println!("{:?}", config);
     /// ```
     pub fn web16() -> Configuration {
@@ -84,7 +84,7 @@ impl Configuration {
     /// use xkcd_pass::configuration::Configuration;
     ///
     /// let config = Configuration::web32();
-    /// // Print out the default configuration
+    /// // Print out the web32 configuration
     /// println!("{:?}", config);
     /// ```
     pub fn web32() -> Configuration {
@@ -97,7 +97,7 @@ impl Configuration {
     /// use xkcd_pass::configuration::Configuration;
     ///
     /// let config = Configuration::wifi();
-    /// // Print out the default configuration
+    /// // Print out the wifi configuration
     /// println!("{:?}", config);
     /// ```
     pub fn wifi() -> Configuration {

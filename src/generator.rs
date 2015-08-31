@@ -5,6 +5,17 @@ use rand::{Rng, thread_rng};
 use super::configuration::{Configuration, WordTransformations, SeperatorTypes, PaddingCharTypes, PaddingTypes};
 use super::word_list::WordList;
 
+/// Generates a password with the given configuration and word list.
+///
+/// ```
+/// use xkcd_pass::{generate_password, Configuration, SimpleEnglish};
+///
+/// let config = Configuration::default();
+/// let word_list = SimpleEnglish::new();
+/// // Generate 1 password.
+/// let password = generate_password(&config, &word_list);
+/// println!("Password: {}", password);
+/// ```
 pub fn generate_password<A: WordList>(config: &Configuration, word_list: &A) -> String {
     // TODO: Accept different random generators
     let mut rgen = thread_rng();
