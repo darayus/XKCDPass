@@ -25,19 +25,19 @@ pub fn generate_password<A: WordList>(config: &Configuration, word_list: &A) -> 
     let num_words = config.words.num_words as usize;
     let mut chosen_words = Vec::with_capacity(num_words);
 
-    for _ in (0..num_words) {
+    for _ in 0..num_words {
         let random_index = rgen.gen_range(0, word_list.len());
         chosen_words.push(word_list[random_index].clone());
     }
     // Lowercase all the words
-    for i in (0..chosen_words.len()) {
+    for i in 0..chosen_words.len() {
         chosen_words[i] = to_lower_case(&chosen_words[i]);
     }
 
     // Modify the case of the words
     match config.words.transformations {
         WordTransformations::CapitaliseFirst => {
-            for i in (0..chosen_words.len()) {
+            for i in 0..chosen_words.len() {
                 let final_word: String = {
                     let word = &chosen_words[i];
                     let mut word_iter = word.chars();
@@ -52,7 +52,7 @@ pub fn generate_password<A: WordList>(config: &Configuration, word_list: &A) -> 
             }
         },
         WordTransformations::CapitaliseNonFirst => {
-            for i in (0..chosen_words.len()) {
+            for i in 0..chosen_words.len() {
                 let final_word: String = {
                     let word = &chosen_words[i];
                     let mut word_iter = word.chars();
@@ -70,12 +70,12 @@ pub fn generate_password<A: WordList>(config: &Configuration, word_list: &A) -> 
             // Do nothing since all the words are already lower case
         },
         WordTransformations::UpperCase => {
-            for i in (0..chosen_words.len()) {
+            for i in 0..chosen_words.len() {
                 chosen_words[i] = to_upper_case(&chosen_words[i]);
             }
         },
         WordTransformations::AlternatingLowerUpper => {
-            for i in (0..chosen_words.len()) {
+            for i in 0..chosen_words.len() {
                 if i % 2 == 1 {
                     // Make every second word upper case
                     chosen_words[i] = to_upper_case(&chosen_words[i]);
@@ -83,7 +83,7 @@ pub fn generate_password<A: WordList>(config: &Configuration, word_list: &A) -> 
             }
         },
         WordTransformations::RandomLowerUpper => {
-            for i in (0..chosen_words.len()) {
+            for i in 0..chosen_words.len() {
                 if rgen.gen() {
                     // Make every second word upper case
                     chosen_words[i] = to_upper_case(&chosen_words[i]);
