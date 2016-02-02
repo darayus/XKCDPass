@@ -3,7 +3,7 @@ XKCD Password Generator
 
 [![Build Status](https://travis-ci.org/darayus/XKCDPass.svg?branch=master)](https://travis-ci.org/darayus/XKCDPass)
 
-A password generation library based on https://xkpasswd.net/ perl module for the Rust programming library. 
+A password generation library based on https://xkpasswd.net/ perl module for the Rust programming library. Documentation can be found [here](https://docs.darayus.com/XKCDPass/xkcd_pass/).
 
 ```rust
 use xkcd_pass::{SimpleEnglish, Configuration, generate_password};
