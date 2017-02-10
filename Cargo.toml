@@ -1,8 +1,9 @@
 [package]
 name = "xkcd_pass"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Darayus Nanavati <darayus.contact@gmail.com>"]
 
 [dependencies]
 rand = "0.3"
-rustc-serialize = "0.3"
+serde = "0.9"
+serde_derive = "0.9"

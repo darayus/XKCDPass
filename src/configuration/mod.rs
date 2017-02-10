@@ -19,7 +19,7 @@ pub mod defaults;
 
 /// The base configuration struct for the password generator. Pass this configuration to the
 /// generator to create a password.
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Configuration {
     /// The configuration for the quantity and style of words generated
     pub words: WordConfiguration,
@@ -125,7 +125,7 @@ impl Configuration {
 }
 
 /// The configuration for the quantity and style of words generated
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct WordConfiguration {
     /// The number of words that should be in the password
     pub num_words: u8,
@@ -138,7 +138,7 @@ pub struct WordConfiguration {
     pub transformations: WordTransformations,
 }
 
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum WordTransformations {
     /// Capitalise the first letter of every word. i.e `Random` and `Word`
     CapitaliseFirst,
@@ -155,7 +155,7 @@ pub enum WordTransformations {
 }
 
 /// The configuration for the seperator characters between words
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct SeperatorConfiguration {
     /// The method in which the seperator chosen during password generation
     pub seperator_type: SeperatorTypes,
@@ -163,7 +163,7 @@ pub struct SeperatorConfiguration {
     pub seperators: Vec<char>,
 }
 
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum SeperatorTypes {
     /// Use the same character (the first character in the seperators vector) for the seperator
     /// between all of the words
@@ -173,7 +173,7 @@ pub enum SeperatorTypes {
 }
 
 /// The configuration for the padding digits before and after the password
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PaddingDigitConfiguration {
     /// The number of digits to pad before the password
     pub num_before: u8,
@@ -182,7 +182,7 @@ pub struct PaddingDigitConfiguration {
 }
 
 /// The configuration for the padding symbols before and after the password
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub struct PaddingSymbolConfiguration {
     /// The padding style to use for the password
     pub padding_type: PaddingTypes,
@@ -193,7 +193,7 @@ pub struct PaddingSymbolConfiguration {
 }
 
 /// The padding style to use for the password
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum PaddingTypes {
     /// Pad the password to the length given. If the password is only 10 characters long and this
     /// is set to 16, 6 extra characters of padding will be added to the end of the password
@@ -205,7 +205,7 @@ pub enum PaddingTypes {
 }
 
 /// The method in which the padding characters are chosen
-#[derive(Debug, RustcDecodable, RustcEncodable)]
+#[derive(Debug, Serialize, Deserialize)]
 pub enum PaddingCharTypes {
     /// Only a single character will be used for the padding. The first character in the
     /// `padding_chars` vector in `PaddingSymbolConfiguration` is used
